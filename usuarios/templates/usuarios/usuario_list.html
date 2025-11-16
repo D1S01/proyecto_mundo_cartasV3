@@ -1,0 +1,35 @@
+{% extends 'tienda/base.html' %}
+
+{%block content %}
+    
+    <h1>Lista de Usuarios</h1>
+
+    <a href="{% url 'usuario-create' %}">crear usuarios</a>
+    <form method="get" action="{% url 'buscar-usuario' %}">
+        <input type="text" name="buscar" value="{{ query }}" placeholder="Buscar producto...">
+        <button type="submit">Buscar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                
+                <th>Nombre Completo</th>
+                <th>RUT</th>
+                <th>Teléfono</th>
+                <th>Rol</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in usuarios %}
+            <tr>
+                <td>{{ i.nombre_completo }}</td>
+                <td>{{ i.rut }}</td>
+                <td>{{ i.telefono }}</td>
+                <td>{{ i.rol }}</td>
+                <td><a href="{% url "usuario-update" i.id %}">editar</a></td>
+                <td><a href="{% url "usuario-delete" i.id %}">eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

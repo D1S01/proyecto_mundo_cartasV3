@@ -1,0 +1,55 @@
+{% extends 'tienda/base.html' %}
+
+{%block content %}
+
+    <h1>lista de productos</h1>
+    <a href="{% url 'producto-create' %}">crear producto</a>
+    <li class="nav-item">
+              <a class="nav-link" href="{% url 'categoria-list' %}">Categorias</a>
+    </li>
+    <form method="get" action="{% url 'buscar-inventario' %}">
+        <input type="text" name="buscar" value="{{ query }}" placeholder="Buscar producto...">
+        <button type="submit">Buscar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                
+                <th>Nombre</th>
+                <th>categoria</th>
+                <th>precio</th>
+                <th>stock</th>
+                <th>acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in productos %}
+            <tr>
+                <td>{{ i.nombre }}</td>
+                <td>
+                    <ul>
+                    {% for c in i.categoria.all %}
+                        <li>{{ c.nombre }}</li>
+                    {% empty %}
+                        <li>n/a</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ i.precio }}</td>
+                <td>
+                    {% if i.inventario %}
+                        {{ i.inventario.stock }}
+                    {% else %}
+                        0
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'producto-update' i.id %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'producto-delete' i.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

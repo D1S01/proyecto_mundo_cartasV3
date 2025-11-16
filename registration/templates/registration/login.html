@@ -1,0 +1,9 @@
+{% extends "tienda/base.html" %} 
+
+{% block content %}
+<form method="post">
+  {% csrf_token %} 
+  {{ form.as_p }}
+  <button class="btn btn-info">Iniciar sesion</button>
+</form>
+{% endblock content %}

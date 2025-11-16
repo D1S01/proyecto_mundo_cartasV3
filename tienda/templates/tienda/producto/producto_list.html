@@ -1,0 +1,75 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+
+<h1>Lista de productos</h1>
+
+
+<form method="get" action="{% url 'buscar-producto' %}">
+    <input type="text" name="buscar" value="{{ query }}" placeholder="Buscar por nombre...">
+    
+   
+    <select name="categoria" onchange="this.form.submit()">
+        <option value="">Todas las categorías</option>
+        {% for categoria in categorias %}
+        <option value="{{ categoria.id }}" 
+                {% if categoria_seleccionada == categoria.id|stringformat:"s" %}selected{% endif %}>
+            {{ categoria.nombre }}
+        </option>
+        {% endfor %}
+    </select>
+    
+    <button type="submit">Buscar</button>
+    <a href="{% url 'buscar-producto' %}">Limpiar</a>
+</form>
+
+<a href="{% url 'ver_carrito' %}">carrito </a>
+
+<div class="d-flex">
+    
+    {% for producto in productos %}
+        <div class="card m-2" style="width: 18rem">
+
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="..." />
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">
+                    Categoria:<ul>
+                    {% for c in producto.categoria.all %}
+                        <li>{{ c.nombre }}</li>
+                    {% empty %}
+                        <li>n/a</li>
+                    {% endfor %}
+                    </ul>
+                </p>
+                <p class="card-text">Precio: ${{ producto.precio }}</p>
+                <p class="card-text">
+                stock:
+                    <ul>
+                        {% if producto.inventario %}
+                    {{ producto.inventario.stock }}
+                {% else %}
+                    0
+                {% endif %}
+                    </ul>
+                 </p>
+                 <form action="{% url 'agregar_al_carrito' producto.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">agregar al carrito</button>
+                 </form>
+                {% comment %} <p class="card-text">Publicacion: {{ book.anio_publicacion }}</p> {% endcomment %}
+                {% comment %}
+                <a href="{% url 'producto-update' producto.id %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'producto-delete' producto.id %}" class="btn btn-danger">Eliminar</a>
+                {% endcomment %}
+                 
+            </div>
+        </div>  
+    {% empty %}
+      <p>No hay productos guardados</p>
+    {% endfor %}
+</div>
+
+{% endblock content %}

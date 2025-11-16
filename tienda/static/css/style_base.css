@@ -1,0 +1,246 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html{
+  font-size: 62.5%;
+}
+body{
+  font-size: 1.6rem;
+}
+
+nav{
+  height: 8rem;
+}
+
+.titulo-nav{
+  font-size: 5rem;
+}
+
+.imagen-producto {
+    height: 29rem;
+    width: 100%;
+    object-fit: contain;
+  }
+
+
+.list-group {
+  margin: 20px 0;
+  padding: 0;
+  list-style-type: none;
+  margin-left: 1rem;
+  width: 30rem;
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 0.5rem;
+  font-size: 2rem;
+}
+
+.list-group-item:hover {
+  background-color: #0056b3;
+}
+
+.list-group-item i {
+  margin-right: 1rem;
+}
+
+.info-personal{
+  font-size: 2rem;
+  margin-right: 2.5rem;
+  margin-top: 1rem;
+}
+
+.btn-outline-light{
+  font-size: 1.8rem;
+  margin-right: 1rem;
+  margin-top: 0.8rem;
+}
+
+.listas{
+  font-size: 4.5rem;
+  margin-top: 1rem;
+}
+
+.d-inline-flex{
+  font-size: 2.5rem;
+  width: 50rem;
+  margin-top: 2rem;
+}
+
+.d-inline-flex button{
+  font-size: 1.8rem;
+  padding: 0.1rem;
+  width: 8rem;
+  height: 4rem;
+  margin-top: 0.1rem;
+  margin-left: 1rem;
+}
+
+.d-inline-flex input{
+  border-radius: 7px;
+  border: solid 0.1px;
+  margin-left: 1rem;
+  font-size: 2rem;
+  width: 30rem;
+}
+
+.btn{
+  border-radius: 7px;
+}
+
+.producto{
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+.card{
+  width: 30rem;
+  height: 45rem;
+  margin-right: 3rem;
+}
+
+.card-text{
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+.btn-primary{
+  font-size: 2rem;
+}
+
+.btn-secondary{
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.btn-light{
+  font-size: 2rem;
+}
+
+.table{
+  width: 98.5rem;
+  margin-top: 1rem;
+  font-size: 1.8rem;
+}
+
+.aviso{
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+.modal-content, .text-center{
+  width: 40rem;
+  height: 28rem;
+
+}
+
+.card-body{
+  text-align: left;
+}
+
+.modal-content h3{
+  font-size: 3rem;
+}
+
+.modal-content h5{
+  font-size: 2rem;
+  text-align: center;
+}
+
+.descripcion{
+  font-size: 1.8rem;
+}
+
+.crear{
+  font-size: 3rem;
+  margin-top: 1rem;
+}
+
+.forms{
+  width: 70rem;
+  font-size: 2rem;
+}
+
+.forms input{
+  font-size: 1.7rem;
+  border-radius: 7px;
+  border: solid 0.1px;
+}
+
+.forms textarea{
+  border-radius: 7px;
+  border: solid 0.1px;
+  font-size: 2rem;
+}
+
+.forms select{
+  border-radius: 7px;
+  border: solid 0.1px;
+  height: 20rem;
+  font-size: 2rem;
+}
+
+.inp-cantidad{
+  width: 16rem;
+  border-radius: 7px;
+  border: solid 0.1px;
+}
+
+.login{
+  font-size: 3rem;
+  text-align: center;
+}
+
+.form-login{
+  width: 40rem;
+}
+
+.form-login input{
+  font-size: 1.7rem;
+  border-radius: 7px;
+  border: solid 0.1px;
+}
+
+.content-login{
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  display: flex;
+}
+
+.inicio{
+  font-size: 1.8rem;
+}
+
+/* Ajuste del tamaño y estilo de las alertas */
+.alert {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  border-radius: 1rem;
+  width: 40rem;
+}
+
+.alert .close {
+  font-size: 1.5rem;
+  color: #a94442; 
+  background: #e9a4a3;
+  opacity: 1;
+  margin-left: 3.5rem;
+  border-radius: 0.5rem;
+  border: solid 1px;
+}
+

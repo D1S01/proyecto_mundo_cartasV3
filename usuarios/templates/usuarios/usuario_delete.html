@@ -1,0 +1,10 @@
+{% extends 'tienda/base.html' %}
+
+{%block content %}
+<h2>¿Estás seguro que deseas eliminar a {{ usuario.nombre_completo }}?</h2>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Confirmar</button>
+</form>
+
+{% endblock content%}

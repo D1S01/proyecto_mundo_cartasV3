@@ -1,0 +1,50 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<h1>Reporte de Ventas</h1>
+
+<hr>
+
+{% if ventas %}
+    <table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th>ID Venta</th>
+                <th>Usuario</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Fecha y Hora</th>
+                <th>Costo Unitario</th>
+                <th>Costo Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+                {% for detalle in venta.detalle_venta_set.all %}
+                    <tr>
+                        <td>{{ venta.id }}</td>
+                        <td>{{ venta.usuario.username }}</td>
+                        <td>{{ detalle.producto.nombre }}</td>
+                        <td>{{ detalle.cantidad }}</td>
+                        <td>{{ venta.fecha_venta}}</td>
+                        <td>${{ detalle.precio_unitario }}</td>
+                        <td><strong>${{ detalle.subtotal }}</strong></td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+{% else %}
+    <p>No hay ventas registradas aún.</p>
+{% endif %}
+
+<hr>
+
+<a href="{% url 'producto-list' %}" style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+    Volver
+</a>
+
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+
+<h1>{{action}} Categoria</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button class="btn btn-success">{{action}} categoria</button>
+    <a class="btn btn-secondary" href="{% url 'categoria-list' %}">Volver</a>
+</form>
+
+{% endblock content %}

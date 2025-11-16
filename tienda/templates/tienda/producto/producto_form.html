@@ -1,0 +1,14 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+
+<h1>{{action}} producto</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <button class="btn btn-success">{{action}} producto</button>
+    <a class="btn btn-secondary" href="{% url 'producto-list' %}">Volver</a>
+</form>
+
+{% endblock content %}

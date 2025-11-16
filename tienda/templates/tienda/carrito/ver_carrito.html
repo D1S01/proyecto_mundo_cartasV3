@@ -1,0 +1,47 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+
+<h1>carrito</h1>
+
+{% if items %}
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.producto.nombre }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>${{ item.precio_unitario }}</td>
+
+            <td>${{ item.subtotal }}</td>
+            <td>
+                <a href="{% url 'incrementar_item' item.id %}">+</a>
+                <a href="{% url 'disminuir_item' item.id %}">-</a>
+                <a href="{% url 'eliminar_item' item.id %}">🗑️</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Total: ${{ total }}</h3>
+
+<a href="{% url 'vaciar_carrito' %}">Vaciar carrito</a>
+
+{% else %}
+<p>el carrito está vacío</p>
+{% endif %}
+<a href="{% url 'resumen_pago' %}">
+    <button type="button">Ir a Pagar</button>
+</a>
+
+{% endblock %}

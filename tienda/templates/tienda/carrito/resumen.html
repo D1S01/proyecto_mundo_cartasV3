@@ -1,0 +1,72 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+
+<h1>Resumen de Compra</h1>
+
+<hr>
+
+<h3>Detalle del Pedido</h3>
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ item.producto.nombre }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>${{ item.precio_unitario }}</td> 
+            <td>${{ item.subtotal }}</td> 
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<hr>
+
+<h3>Totales</h3>
+<table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+        <td>Subtotal:</td>
+        <td>${{ subtotal }}</td> 
+    </tr>
+    <tr>
+        <td>IVA (19%):</td>
+        <td>${{ iva }}</td>
+    </tr>
+    <tr>
+        <td><strong>Total a Pagar:</strong></td>
+        <td><strong>${{ total_con_iva }}</strong></td>
+    </tr>
+</table>
+
+<hr>
+
+<h3>Forma de Pago</h3>
+<form action="{% url 'pagar' %}" method="post">
+    {% csrf_token %}
+    
+    <label>
+        <input type="radio" name="metodo_pago" value="efectivo" required> 
+        Efectivo
+    </label>
+    <br>
+    <label>
+        <input type="radio" name="metodo_pago" value="tarjeta"> 
+        Tarjeta
+    </label>
+    <br><br>
+    
+    <button type="submit">Confirmar y Pagar</button>
+</form>
+
+<br>
+<a href="{% url 'ver_carrito' %}">Cancelar y Volver al Carrito</a>
+
+{% endblock %}
