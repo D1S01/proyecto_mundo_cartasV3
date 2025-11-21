@@ -19,9 +19,10 @@
   </head>
   <body>
     
-    <main class="d-flex flex-nowrap vh-100" >
+    <main class="d-flex flex-nowrap vh-100">
     {% if request.user.is_authenticated %}
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-primary" style="width: 280px;">
+    <div class="d-flex flex-column flex-shrink-0 h-100 p-3 text-white bg-primary" style="width: 280px;">
+
         
         <span class="fs-4">Mi Tienda</span>
         <img src="{% static 'img/mundocartas.png' %}" class="imagenM" alt="" srcset="">

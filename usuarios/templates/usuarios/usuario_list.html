@@ -1,38 +1,81 @@
 {% extends 'tienda/base.html' %}
 
-{%block content %}
+{% block content %}
+<div class="container mt-4">
     
-    <h1>Lista de Usuarios</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-6 text-black">Lista de Usuarios</h1>
+        <div>
+            <a href="{% url 'usuario-create' %}" class="btn btn-success">
+                <i class="bi bi-person-plus-fill"></i> Crear Usuario
+            </a>
+        </div>
+    </div>
 
-    <a href="{% url 'usuario-create' %}">crear usuarios</a>
-     <form method="get" class="d-flex mb-4">
-      <input type="text" name="q" value="{{ query }}" placeholder="Buscar por nombre..."
-             class="form-control me-2">
-      <button type="submit" class="btn btn-primary">
-        <i class="bi bi-search"></i> Buscar
-      </button>
-    </form>
-    <table>
-        <thead>
-            <tr>
-                
-                <th>Nombre Completo</th>
-                <th>RUT</th>
-                <th>Teléfono</th>
-                <th>Rol</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in usuarios %}
-            <tr>
-                <td>{{ i.nombre_completo }}</td>
-                <td>{{ i.rut }}</td>
-                <td>{{ i.telefono }}</td>
-                <td>{{ i.rol }}</td>
-                <td><a href="{% url "usuario-update" i.id %}">editar</a></td>
-                <td><a href="{% url "usuario-delete" i.id %}">eliminar</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="card mb-4 border-0 shadow-sm">
+        <div class="card-body">
+            <form method="get" class="d-flex mb-0">
+                <input type="text" name="q" value="{{ query }}" placeholder="Buscar por nombre..."
+                        class="form-control me-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-search"></i> Buscar
+                </button>
+            </form> 
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-primary">
+                        <tr>
+                            <th scope="col" class="ps-4">Nombre Completo</th>
+                            <th scope="col">RUT</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col" class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        {% for i in usuarios %}
+                        <tr>
+                            <td class="fw-bold text-black">
+                                {{ i.nombre_completo }}
+                            </td>
+                            
+                            <td class="text-black fw-bold">{{ i.rut }}</td>
+                            
+                            <td class="text-black fw-bold">{{ i.telefono }}</td>
+                            
+                            <td>
+                                <span class="text-black fw-bold">
+                                    {{ i.rol }}
+                                </span>
+                            </td>
+
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'usuario-update' i.id %}" class="btn btn-sm btn-primary text-white" title="Editar">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </a>
+                                    <a href="{% url 'usuario-delete' i.id %}" class="btn btn-sm btn-danger text-white ms-1" title="Eliminar">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center py-5 text-muted">
+                                No se encontraron usuarios registrados.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
