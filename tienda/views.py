@@ -53,7 +53,7 @@ def ProductoCreateView(request):
             producto = form.save()
             stock = request.POST.get('stock')
             Inventario.objects.create(producto=producto, stock=stock)
-            return redirect('producto-list')
+            return redirect('inventario-list')
     else:
         form = ProductoForm()
     return render(request, 'tienda/producto/producto_form.html', {'form': form, 'action': 'Crear'})
@@ -63,7 +63,7 @@ def ProductoDeleteView(request, id):
     producto=get_object_or_404(Producto, pk=id)
     if request.method=="POST":
         producto.delete()
-        return redirect('producto-list')
+        return redirect('inventario-list')
     return render(request, 'tienda/producto/producto_delete.html')
 
 @login_required
@@ -75,7 +75,7 @@ def ProductoUpdateView(request, id):
             producto = form.save()
             stock = request.POST.get('stock')
             Inventario.objects.update_or_create(producto=producto, defaults={'stock': stock})
-            return redirect('producto-list')
+            return redirect('inventario-list')
     else:
         form = ProductoForm(instance=producto, initial={'stock': producto.inventario.stock})
     return render(request, 'tienda/producto/producto_form.html', {'form': form, 'action': 'Modificar'})
