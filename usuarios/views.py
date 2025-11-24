@@ -5,6 +5,7 @@ from .forms import UsuarioForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Q
+from django.contrib.auth.models import User 
 
 
 
@@ -37,7 +38,13 @@ def UsuarioCreateView(request):
     if request.method == "POST":
         form = UsuarioForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = User.objects.create_user(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password']
+            )
+            usuario = form.save(commit=False)
+            usuario.user = user
+            usuario.save()
             return redirect('usuario-list')
     else:
         form = UsuarioForm()
@@ -50,11 +57,15 @@ def UsuarioUpdateView(request, id):
     if request.method == "POST":
         form = UsuarioForm(request.POST, instance=usuario)
         if form.is_valid():
+            user = usuario.user
+            user.username = form.cleaned_data['username']
+            if form.cleaned_data['password']:
+                user.set_password(form.cleaned_data['password'])
+            user.save()
             form.save()
             return redirect('usuario-list')
     else:
-        
-        form = UsuarioForm(instance=usuario, initial={'username': usuario.user.username,})
+        form = UsuarioForm(instance=usuario, initial={'username': usuario.user.username})
     return render(request, 'usuarios/usuario_form.html', {'form': form, 'action': 'Modificar'})
 
 @login_required
@@ -62,7 +73,7 @@ def UsuarioUpdateView(request, id):
 def UsuarioDeleteView(request, id):
     usuario = get_object_or_404(Usuario, pk=id)
     if request.method == "POST":
-        usuario.delete()
+        usuario.user.delete()
         return redirect('usuario-list')
     return render(request, 'usuarios/usuario_delete.html', {'usuario': usuario})
 

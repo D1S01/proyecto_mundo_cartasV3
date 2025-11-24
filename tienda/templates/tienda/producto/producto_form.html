@@ -1,14 +1,21 @@
 {% extends 'tienda/base.html' %}
 
 {% block content %}
+<div class="container mt-4" style="max-width: 500px;">
+    
+    <div class="card p-4 shadow-sm border-0">
+        <h2 class="text-black fw-bold mb-4">Formulario de Usuario</h2>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a href="{% url 'inventario-list' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
 
-<h1>{{action}} producto</h1>
+        </form>
+    </div>
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form}}
-    <button class="btn btn-success">{{action}} producto</button>
-    <a class="btn btn-secondary" href="{% url 'producto-list' %}">Volver</a>
-</form>
-
+</div>
 {% endblock content %}
