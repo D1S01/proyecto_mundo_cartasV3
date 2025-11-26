@@ -18,7 +18,7 @@
     </div>
 
     {% for c in categorias %}
-    <div class="form-check mb-1">
+    <div class="form-check form-check-inline mb-1">
         <input class="form-check-input"
                type="checkbox"
                name="categoria"
@@ -36,7 +36,7 @@
     
 </form>
 
-<a href="{% url 'ver_carrito' %}">carrito </a>
+<a href="{% url 'ver_carrito' %}" class="btn btn-secondary">carrito <i class="bi bi-cart"></i> </a>
 
 <div class="d-flex flex-wrap">
     
@@ -72,6 +72,7 @@
                     {% csrf_token %}
                     <button type="submit">agregar al carrito</button>
                  </form>
+                    <a href="{% url 'producto-detail' producto.id %}" class="btn btn-primary mt-2">Ver detalles</a>
                 {% comment %} <p class="card-text">Publicacion: {{ book.anio_publicacion }}</p> {% endcomment %}
                 {% comment %}
                 <a href="{% url 'producto-update' producto.id %}" class="btn btn-warning">Editar</a>

@@ -93,6 +93,10 @@ def ProductoUpdateView(request, id):
     else:
         form = ProductoForm(instance=producto, initial={'stock': producto.inventario.stock})
     return render(request, 'tienda/producto/producto_form.html', {'form': form, 'action': 'Modificar'})
+
+def ProductoDetailView(request, id):
+    producto = get_object_or_404(Producto, pk=id)
+    return render(request, 'tienda/producto/producto_detail.html', {'producto': producto})
 # <---------------vistas de categoria------------>
 @login_required
 def CategoriaListView(request):

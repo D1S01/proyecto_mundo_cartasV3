@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (ProductoListView, ProductoCreateView,ProductoDeleteView, ProductoUpdateView,CategoriaListView, 
                     CategoriaCreateView, CategoriaDeleteView, CategoriaUpdateView, InventarioListView, 
                      ver_carrito, agregar_al_carrito, eliminar_item,
-                    incrementar_item, disminuir_item, vaciar_carrito, resumen_pago, pagar, home, reporte_ventas_dias, reporte_ventas, StockBajoListView)  
+                    incrementar_item, disminuir_item, vaciar_carrito, resumen_pago, pagar, home, reporte_ventas_dias, reporte_ventas, StockBajoListView, ProductoDetailView)  
 
 urlpatterns=[
     path('inicio/', home, name='home'),
@@ -13,6 +13,7 @@ urlpatterns=[
     path('producto/create/', ProductoCreateView, name='producto-create'),
     path('producto/delete/<int:id>', ProductoDeleteView, name='producto-delete'),
     path('producto/update/<int:id>', ProductoUpdateView, name='producto-update'),
+    path('producto/<int:id>/', ProductoDetailView, name='producto-detail'),
     # <---------------urls de categoria------------>
     path('categoria/', CategoriaListView, name='categoria-list'),
     path('categoria/create/', CategoriaCreateView, name='categoria-create'),
