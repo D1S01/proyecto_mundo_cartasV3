@@ -7,12 +7,13 @@ class ProductoForm(forms.ModelForm):
 
     class Meta:
         model = Producto
-        fields = ['nombre', 'precio', 'categoria', 'imagen', 'stock']
+        fields = ['nombre', 'precio', 'categoria', 'imagen', 'stock', 'codigo_barra']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'precio': forms.NumberInput(attrs={'class': 'form-control', 'min': '0'}),
             'imagen': forms.FileInput(attrs={'class': 'form-control'}),
             'categoria': forms.CheckboxSelectMultiple(),
+            'codigo_barra': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
         

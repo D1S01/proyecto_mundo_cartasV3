@@ -33,7 +33,7 @@ def ProductoListView(request):
     productos = Producto.objects.all()
 
     if query:
-        productos = productos.filter(Q(nombre__icontains=query))
+        productos = productos.filter(Q(nombre__icontains=query)|Q(codigo_barra__icontains=query))
 
     if categorias_select:
         productos = productos.filter(categoria__id__in=categorias_select).distinct()
