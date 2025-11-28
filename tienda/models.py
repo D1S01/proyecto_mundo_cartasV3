@@ -13,6 +13,7 @@ class Producto(models.Model):
     precio=models.IntegerField()
     categoria=models.ManyToManyField(Categoria)
     imagen=models.ImageField(upload_to="productos")
+    codigo_barra=models.CharField(max_length=254, unique=True, blank=True, null=True)
 
     def __str__(self):
         return self.nombre
