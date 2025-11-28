@@ -14,54 +14,54 @@ img{
 
 
 /**Utilidades**/
-.seccion{
+/* .seccion{
     margin-top: 20px;
     margin-bottom: 20px;
-}
+} */
 
-.fw-400{
+/* .fw-400{
     font-weight: 400;
-}
+} */
 
-.centrar-texto{
+/* .centrar-texto{
     text-align: center;
-}
+} */
 
 
-.iconos-caracteristicas{
+/* .iconos-caracteristicas{
     list-style: none;
     display: flex;
     justify-content: start;
     align-items: center;
     padding: 0;
-}
+} */
 
-.iconos-caracteristicas li{
+/* .iconos-caracteristicas li{
     flex-basis: calc(15% - 1rem);
     margin-right: 1rem;
-}
+} */
 
 
 
 /**seccion inferior**/
-.seccion-inferior{
+/* .seccion-inferior{
     display: flex;
     justify-content: space-between;
-}
+} */
 
-.seccion-inferior .populares{
+/* .seccion-inferior .populares{
     flex-basis: 60%;
-}
+} */
 
-.seccion-inferior .comentarios{
+/* .seccion-inferior .comentarios{
     flex-basis: calc(40% - 2rem);
-}
+} */
 
-.entradas{
+/* .entradas{
     display: flex;
     justify-content: space-between;
     margin-bottom: 2rem;
-}
+} */
 
 .entrada-img{
     flex-basis: 50%;
@@ -87,20 +87,20 @@ img{
     height: auto;
 }
 
-.entrada-texto{
+/* .entrada-texto{
     margin: 4rem 4rem 0 0;
     flex-basis: calc(50% - 3rem);
-}
+} */
 
-.entrada-texto h3{
+/* .entrada-texto h3{
     margin: 0;
     line-height: 1.4;
-}
+} */
 
 
 
 /**Mangas**/
-.mangas{
+/* .mangas{
     display: flex;
     justify-content: space-between;
     padding: 20px 0;
@@ -117,7 +117,7 @@ img{
 .manga-contenido p, .manga-contenido blockquote{
     font-size: 20px;
     margin-bottom: 20px;
-}
+} */
 
 
 .imagenM {

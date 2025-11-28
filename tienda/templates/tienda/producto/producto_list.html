@@ -36,16 +36,17 @@
     
 </form>
 
-<a href="{% url 'ver_carrito' %}" class="btn btn-secondary">carrito <i class="bi bi-cart"></i> </a>
+<a href="{% url 'ver_carrito' %}" class="btn btn-secondary">Carrito</a>
 
 <div class="d-flex flex-wrap">
     
     {% for producto in productos %}
         <div class="card m-2" style="width: 18rem">
-
+            <div class="p-2">
             {% if producto.imagen %}
                 <img src="{{ producto.imagen.url }}" class="card-img-top" alt="..." />
             {% endif %}
+            </div>
             <div class="card-body">
                 <h5 class="card-title">{{ producto.nombre }}</h5>
                 <p class="card-text">
